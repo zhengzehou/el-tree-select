@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="https://unpkg.com/vue"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="./treeselect.js"></script>
+
+</head>
+<body>
+
+  <div id="app">
+    <p style="color:red">{{ selected }}</P>
+	<el-tree-select :node-key="id" :checked-keys="checkedKeys" :props="defaultProps" :data="options" :multiple="true" v-model="selected"></el-tree-select>
+  </div>
+
+  <script>
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+	  checkedKeys:[ 9, 10 ],
+	  selected:[],
+	  defaultProps: {
+          children: 'children',
+          label: 'label'
+       },
+	  options: [{
+          id: 1,
+          label: '一级 1',
+          children: [{
+            id: 4,
+            label: '二级 1-1',
+            children: [{
+              id: 9,
+              label: '三级 1-1-1'
+            }, {
+              id: 10,
+              label: '三级 1-1-2'
+            }]
+          }]
+        }, {
+          id: 2,
+          label: '一级 2',
+          children: [{
+            id: 5,
+            label: '二级 2-1'
+          }, {
+            id: 6,
+            label: '二级 2-2'
+          }]
+        }, {
+          id: 3,
+          label: '一级 3',
+          children: [{
+            id: 7,
+            label: '二级 3-1'
+          }, {
+            id: 8,
+            label: '二级 3-2'
+          }]
+        }]
+    }
+  })
+  </script>
+</body>
+</html>
+
+
+ 
